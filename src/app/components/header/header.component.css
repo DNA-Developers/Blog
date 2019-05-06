@@ -1,0 +1,60 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+mat-card {
+  background: #332E3C;
+  border-radius: 0;
+}
+
+#container {
+  display: flex;
+  height: 5vh;
+  width: 100%;
+  text-decoration: none;
+
+}
+#logo {
+  display: inline;
+  justify-self: flex-start;
+  align-self: center;
+  flex: 1;
+
+
+}
+
+#logo a {
+  color: #D8D4F2;
+  font-size: 2rem;
+}
+
+#links {
+  position: absolute;
+  left: 29%;
+  justify-self: center;
+  align-self: center;
+  flex: 1;
+  margin-left: 10rem;
+
+}
+
+#links a {
+  padding: 0 1rem;
+  color: #D8D4F2;
+  font-weight: 300;
+}
+
+#user {
+  position: absolute;
+  left: 91%;
+  justify-self: flex-end;
+  align-self: center;
+  flex: 1;
+}
+
+#user a {
+  color: #D8D4F2;
+  font-size: 1rem;
+}

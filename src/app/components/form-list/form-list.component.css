@@ -1,0 +1,31 @@
+#container {
+  position: absolute;
+  top: 15%;
+  left: 29%;
+  background: #fff;
+  height: 50%;
+  width: 40%;
+  border-radius: 10px;
+
+}
+
+#container h1 {
+  text-align: center;
+  padding-top: 35px;
+  padding-bottom: 10px;
+}
+#form-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#form-container #form {
+  width: 70%;
+}
+
+button {
+  background: #332E3C;
+  margin-top: 1.8rem;
+}
+
