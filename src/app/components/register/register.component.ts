@@ -21,14 +21,15 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-  addUser(user: User) {
-    this.users.push(user);
-  }
+
   onSubmit({value}: {value: User}) {
-     
-    this.addUser(value);
+    if ( this.user.password === this.user.password2)
+    {
       console.log(value);
-    this.form.reset();
+      this.form.reset();
+      console.log(this.users)
+    }
+
 
   }
 }

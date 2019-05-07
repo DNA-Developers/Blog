@@ -4,7 +4,7 @@
   </div>
   <div id="form-container">
   <div id="form">
-    <form #signupForm="ngForm" (ngSubmit)="signupForm.form.valid && onSubmit(signupForm)" [mustMatch]="['userPassword', 'password2']">
+    <form #signupForm="ngForm" (ngSubmit)="signupForm.form.valid && onSubmit(signupForm)">
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" name="name"
@@ -76,10 +76,8 @@
                  Confirm Password required
                 </div>
             </div>
-            <div *ngIf="user.password !== user.password2 && (password2.touched || password2.dirty)">
-                <div [hidden]="user.password === user.password2" class="invalid-feedback small-text">
+            <div *ngIf="user.password !== user.password2 && (password2.touched || password2.dirty)" class="invalid-feedback small-text">
               Passwords must match
-                </div>
               </div>
           </div>
         <button class="btn btn-block btn-dark">Register</button>
