@@ -4,22 +4,83 @@
   </div>
   <div id="form-container">
   <div id="form">
-    <form>
+    <form #signupForm="ngForm" (ngSubmit)="signupForm.form.valid && onSubmit(signupForm)" [mustMatch]="['userPassword', 'password2']">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" class="form-control" placeholder="John Doe">
+            <input type="text" name="name" 
+            id="name" class="form-control" 
+            placeholder="John Doe" [(ngModel)]="user.name"
+            [ngClass]="{'is-invalid':userName.errors && (userName.touched || userName.dirty) }"
+            #userName="ngModel"  
+            required
+            minlength="2">
+            <div *ngIf="userName.touched || userName.dirty">
+            <div [hidden]="!userName.errors?.required" class="invalid-feedback small-text" >
+              Name required
+            </div>
           </div>
+          <div *ngIf="userName.errors && (userName.touched || userName.dirty)">
+            <div [hidden]="!userName.errors?.minlength" class="invalid-feedback small-text">
+          Must be at least 2 characters
+      </div>
+    </div>
+    </div>
+         
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" class="form-control" placeholder="johndoe@gmail.com">
+        <input type="email" name="email" 
+        id="email" class="form-control" 
+        placeholder="johndoe@gmail.com" [(ngModel)]="user.email"
+        [ngClass]="{'is-invalid':userEmail.errors && (userEmail.touched || userEmail.dirty) }"
+        #userEmail="ngModel" required email>
+
+        <div *ngIf="userEmail.touched || userEmail.dirty">
+          <div [hidden]="!userEmail.errors?.required" class="invalid-feedback small-text" >
+            Email required
+          </div>
+      </div>
+      <div *ngIf="userEmail.errors && (userEmail.touched || userEmail.dirty)">
+          <div [hidden]="!userEmail.errors?.email" class="invalid-feedback small-text" >
+              Enter a valid email
+        </div>
+      </div>
       </div>
       <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" 
+          id="password" class="form-control" 
+          placeholder="Password" [(ngModel)]="user.password"
+          [ngClass]="{'is-invalid':userPassword.errors && (userPassword.touched || userPassword.dirty) }"
+          #userPassword="ngModel" minlength="6" required/>
+          <div *ngIf="userPassword.touched || userPassword.dirty">
+              <div [hidden]="!userPassword.errors?.required" class="invalid-feedback small-text" >
+                Password required
+              </div>
+          </div>
+          <div *ngIf="userPassword.errors && (userPassword.touched || userPassword.dirty)">
+              <div [hidden]="!userPassword.errors?.minlength" class="invalid-feedback small-text">
+            Must be at least 6 characters
+              </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="password2">Confirm Password</label>
-            <input type="password" name="password2" id="password2" class="form-control" placeholder="Confirm Password">
+            <input type="password" name="password2" 
+            id="password2" class="form-control" 
+            placeholder="Confirm Password"
+            [(ngModel)]="user.password2"
+            [ngClass]="{'is-invalid':password2.errors && (password2.touched || password2.dirty) }"
+            #password2="ngModel"  required >
+            <div *ngIf="password2.touched || password2.dirty">
+                <div [hidden]="!password2.errors?.required" class="invalid-feedback small-text" >
+                 Confirm Password required
+                </div>
+            </div>
+            <div *ngIf="password2.errors && (password2.touched || password2.dirty)">
+                <div [hidden]="!password2.errors?.mustMatch" class="invalid-feedback small-text">
+              Passwords must match
+                </div>
+              </div>
           </div>
         <button class="btn btn-block btn-dark">Register</button>
     </form>

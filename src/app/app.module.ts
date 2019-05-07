@@ -11,6 +11,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { RegisterContainerComponent } from './components/register-container/register-container.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { FormsModule } from '@angular/forms';
+import { MustMatchDirective } from './match-directive.module';
+
+
 
 @NgModule({
   declarations: [
@@ -20,13 +24,16 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     FormListComponent,
     RegisterComponent,
     RegisterContainerComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    MustMatchDirective
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
